@@ -17,31 +17,35 @@ namespace BombonesApp.Consola
 
             EsperaTecla();
 
-            //#region alta
-            ////var tipo = new TipoRelleno()
-            ////{
-            ////    Descripcion = "XXXYZ"
-            ////};
-            ////int cantidad=ServicioTipoRelleno.GetInstancia().Agregar(tipo);
-            ////if (cantidad==1)
-            ////{
-            ////    Console.WriteLine("Registro agregado");
-            ////}
-            ////ListarRegistros();
+            #region alta
+            //var unitOfWork = new UnitOfWorkSql();
+            //var servicio = new ServicioTipoRelleno(unitOfWork);
+            //var tipo = new TipoRelleno()
+            //{
+            //    Descripcion = "Pepito"
+            //};
+            //int cantidad = servicio.Agregar(tipo);
+            //if (cantidad == 1)
+            //{
+            //    Console.WriteLine("Registro agregado");
+            //}
+            //ListarRegistros();
 
-            ////EsperaTecla();
+            //EsperaTecla();
 
-            //#endregion
-            //#region Editar
+            #endregion
+            #region Editar
+            //var unitOfWork = new UnitOfWorkSql();
+            //var servicio = new ServicioTipoRelleno(unitOfWork);
 
-            //var tipoEditar = ServicioTipoRelleno.GetInstancia().GetPorId(31);
-            //if (tipoEditar==null)
+            //var tipoEditar = servicio.GetPorId(38);
+            //if (tipoEditar == null)
             //{
             //    Console.WriteLine("tipo no encontrado");
             //}
 
-            //tipoEditar.Descripcion = "XXXYYYZ";
-            //int cantidadEditada = ServicioTipoRelleno.GetInstancia().Editar(tipoEditar);
+            //tipoEditar.Descripcion = "Pone orden Albert";
+            //int cantidadEditada = servicio.Editar(tipoEditar);
             //if (cantidadEditada == 1)
             //{
             //    Console.WriteLine("Registro editado");
@@ -50,28 +54,30 @@ namespace BombonesApp.Consola
 
             //EsperaTecla();
 
-            //#endregion
+            #endregion
 
-            //#region Borrar
+            #region Borrar
+            var unitOfWork = new UnitOfWorkSql();
+            var servicio = new ServicioTipoRelleno(unitOfWork);
 
-            //var tipoBorrar = ServicioTipoRelleno.GetInstancia().GetPorId(24);
-            //if (tipoBorrar == null)
-            //{
-            //    Console.WriteLine("tipo no encontrado");
-            //}
+            var tipoBorrar = servicio.GetPorId(38);
+            if (tipoBorrar == null)
+            {
+                Console.WriteLine("tipo no encontrado");
+            }
 
-            //int cantidadBorrar=ServicioTipoRelleno.GetInstancia().Borrar(tipoBorrar);
-            //if (cantidadBorrar>0)
-            //{
-            //    Console.WriteLine("Registro borrado");
-            //    ListarRegistros();
-            //    EsperaTecla();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Error al borrar");
-            //}
-            //#endregion
+            int cantidadBorrar = servicio.Borrar(tipoBorrar);
+            if (cantidadBorrar > 0)
+            {
+                Console.WriteLine("Registro borrado");
+                ListarRegistros();
+                EsperaTecla();
+            }
+            else
+            {
+                Console.WriteLine("Error al borrar");
+            }
+            #endregion
             Console.ReadLine();
         }
 
